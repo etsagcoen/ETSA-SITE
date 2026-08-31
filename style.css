@@ -89,9 +89,10 @@ nav.wrap{
 }
 
 .logo-mark{
-  width:32px;
-  height:32px;
+  height:38px;
+  width:auto;
   flex-shrink:0;
+  object-fit:contain;
 }
 
 .nav-links{
@@ -2224,6 +2225,23 @@ footer{
   color:var(--ink);
   letter-spacing:-0.02em;
   margin-bottom:16px;
+}
+
+.footer-logo-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.footer-logo-mark{
+  height:44px;
+  width:auto;
+  object-fit:contain;
+}
+
+.footer-logo-row .footer-logo-text{
+  margin-bottom:0;
 }
 
 .footer-brand p{
