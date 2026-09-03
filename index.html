@@ -268,13 +268,14 @@
           bar.style.height = bar.dataset.height;
         });
 
+        //MOST IMPORTANT FOR CHANGING RING PROGRESS
         // Animate progress ring
         const ring = tile.querySelector('.progress-fill');
         if(ring && !ring.classList.contains('animated')){
           ring.classList.add('animated');
           // 68% of 364.4 circumference = ~116.6 offset
           const circumference = 2 * Math.PI * 58; // ~364.4
-          const offset = circumference - (0.68 * circumference);
+          const offset = circumference - (0.10 * circumference);
           ring.style.strokeDashoffset = offset;
 
           // Animate percentage text
