@@ -2,7 +2,7 @@
   --bg: #0a0e14;
   --bg-soft: #10151f;
   --ink: #e8edf2;
-  --ink-dim: #8b96a5;
+  --ink-dim: #8b96a5;.com
   --line: #1c2532;
   --signal: #8b5cf6;
   --signal-deep: #8b5cf6;
@@ -1268,6 +1268,7 @@ h2.section-title{
   transform:translateX(-50%);
   border-radius:2px;
   overflow:hidden;
+  z-index:0;
 }
 
 .comp-line-fill{
@@ -1387,7 +1388,7 @@ h2.section-title{
 }
 
 .comp-poster{
-  flex:0 0 44%;
+  flex:0 0 calc(50% - 24px);
   aspect-ratio:4 / 3;
   border-radius:16px;
   border:1px solid var(--line);
@@ -1448,7 +1449,7 @@ h2.section-title{
 
 .comp-info{
   position:relative;
-  z-index:1;
+  z-index:2;
   flex:1;
   min-width:0;
 }
