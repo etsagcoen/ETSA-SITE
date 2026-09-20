@@ -2339,3 +2339,26 @@ footer{
     margin-bottom:14px;
   }
 }
+
+/* ===== Poster (for ALL posters) ===== */
+.comp-poster.comp-poster--image{
+  aspect-ratio:var(--poster-ratio, 16 / 9) !important;
+  display:block !important;
+  position:relative;
+  background:var(--bg-soft);
+}
+
+.comp-poster.comp-poster--image a{
+  position:absolute;
+  inset:0;
+  display:block;
+}
+
+.comp-poster.comp-poster--image img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
