@@ -2398,3 +2398,46 @@ footer{
   object-fit:cover;
   display:block;
 }
+/* ===== Horizon logo  ===== */
+
+.event-hero{
+  --logo-width: 700px;        /* LOGO SIZE: make bigger or smaller */
+  --space-above-logo: 8px;   /* gap between FLAGSHIP EVENT tag and logo */
+  --space-below-logo: 4px;    /* gap between logo and description text */
+  padding:70px 0 40px;        /* space at the top / bottom of the whole hero */
+}
+
+.event-hero .eyebrow{
+  margin-bottom:var(--space-above-logo);
+}
+
+.event-hero .horizon-logo-title{
+  display:block;
+  max-width:none;
+  margin:0 auto;
+  font-size:0;
+  line-height:0;
+}
+
+.event-hero .horizon-logo{
+  display:block;
+  width:min(var(--logo-width), 92%);
+  height:auto;
+  aspect-ratio:597 / 143;     /* crops away empty top and bottom of image */
+  object-fit:cover;
+  object-position:50% 43.6%;
+  margin:0 auto;
+  filter:drop-shadow(0 0 28px rgba(235, 40, 40, 0.25));
+}
+
+.event-hero p.sub{
+  margin:var(--space-below-logo) auto 0;
+}
+
+/* Smaller logo on phones */
+@media (max-width:640px){
+  .event-hero{
+    --logo-width: 420px;
+    padding:50px 0 30px;
+  }
+}
