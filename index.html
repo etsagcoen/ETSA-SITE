@@ -208,7 +208,7 @@
             </svg>
           </div>
           <span class="tile-label mono">Days Left</span>
-          <div class="tile-number small" data-target="8">0</div>
+          <div class="tile-number small" data-target="8" data-countdown-to="2026-10-04">0</div>
           <p class="tile-caption">Until Horizon 2026</p>
         </div>
       </div>
@@ -290,6 +290,34 @@
   }, { threshold: 0.2 });
 
   document.querySelectorAll('.bento-tile').forEach(tile => observer.observe(tile));
+})();
+</script>
+
+<!--DAYS LEFT SCRIPT FOR AUTOMATIC COUNTDOWN-->
+  <script>
+(function () {
+  var el = document.querySelector('[data-countdown-to]');
+  if (!el) return;
+
+  var targetDate = new Date(el.dataset.countdownTo + 'T00:00:00');
+
+  function updateCountdown() {
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    var msPerDay = 1000 * 60 * 60 * 24;
+    var daysLeft = Math.ceil((targetDate - today) / msPerDay);
+
+    if (daysLeft < 0) {
+      daysLeft = 0;
+    }
+
+    el.textContent = daysLeft;
+  }
+
+  updateCountdown();
+
+  setInterval(updateCountdown, 1000 * 60 * 60);
 })();
 </script>
 
