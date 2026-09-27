@@ -1047,7 +1047,6 @@ h2.section-title{
 .sponsor-card.title{
   max-width:none;
   width:100%;
-  border-color:var(--signal);
 }
 
 .sponsor-card.title .sponsor-logo{
@@ -1087,7 +1086,7 @@ h2.section-title{
   line-height:1.5;
 }
 
-.sponsor-card a.link{
+.sponsor-card .link{
   color:var(--signal-deep);
   font-weight:600;
   font-size:0.9rem;
@@ -1096,9 +1095,11 @@ h2.section-title{
   transition:opacity .2s;
 }
 
-.sponsor-card a.link:hover{
+.sponsor-card:hover .link{
   opacity:0.8;
 }
+
+
 
 .sponsor-cta{
   text-align:center;
@@ -1136,6 +1137,33 @@ h2.section-title{
   }
 }
 
+/* ===== Sponsor logos  ===== */
+.sponsor-logo-img{
+  display:block;
+  max-width:120px;
+  max-height:64px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  margin:0 auto 18px;
+}
+
+/* ROBO STUDIO BANNER STYLE  */
+.sponsor-logo-img--wide{
+  max-width:180px;
+  max-height:56px;
+  border-radius:6px;   /* banner*/
+}
+
+/* hover */
+.sponsor-card{
+  text-decoration:none;
+  display:block;
+}
+
+.sponsor-card:hover .link{
+  opacity:0.8;
+}
 
 /* =========================================================
    HORIZON EVENT PAGE
