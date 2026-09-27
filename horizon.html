@@ -491,34 +491,21 @@
   </div>
 </footer>
   
-<!--HACKTHON OR COMPETITION TIMER SUBSCRIPT-->
+<!--HACKATHON OR COMPETITION TIMER SUBSCRIPT-->
 <script>
-  //  how many hours the hackathon runs
-  var HACKATHON_DURATION_HOURS = 2 ;
+  // ============================================
+  // SET THE EXACT START TIME HERE — only you can change this,
+  // since it's baked into the file, not clickable by visitors.
+  // Format: 'YYYY-MM-DDTHH:MM:SS' in 24-hour time.
+  // Example: 9:30 AM on 4 October 2026 → '2026-10-04T09:30:00'
+  // ============================================
+  var HACKATHON_START = new Date('2026-09-27T09:40:00');
+  var HACKATHON_DURATION_HOURS = 2;
 
-  // HOW THIS WORKS:
-  // - If the page URL has ?start=169999999999 in it, the timer reads
-  //   that exact moment as the real start time (this is what happens
-  //   for participants who open the link the organizer shares).
-  // - If there's NO ?start= in the URL, a "Start Hackathon Now" button
-  //   is shown. The organizer clicks it the moment the event begins.
-  //   This creates a special link (with ?start= added) that they then
-  //   copy and share with everyone so all timers match exactly.
- 
-
-  var HACKATHON_START = null;
-  var HACKATHON_END = null;
+  var HACKATHON_END = new Date(HACKATHON_START.getTime() + HACKATHON_DURATION_HOURS * 60 * 60 * 1000);
   var timerIntervalHandle = null;
 
   function pad(n){ return String(n).padStart(2, '0'); }
-
-  function beginTimerFrom(startTimestamp){
-    HACKATHON_START = new Date(startTimestamp);
-    HACKATHON_END = new Date(HACKATHON_START.getTime() + HACKATHON_DURATION_HOURS * 60 * 60 * 1000);
-    updateHackathonTimer();
-    if(timerIntervalHandle) clearInterval(timerIntervalHandle);
-    timerIntervalHandle = setInterval(updateHackathonTimer, 1000);
-  }
 
   function updateHackathonTimer(){
     var now = new Date();
@@ -528,7 +515,7 @@
     var progressFill = document.getElementById('timer-progress-fill');
     var progressPct = document.getElementById('timer-progress-pct');
     var display = document.getElementById('timer-display');
-    if(!statusBadge || !HACKATHON_START) return;
+    if(!statusBadge) return;
 
     var remaining;
 
@@ -572,44 +559,8 @@
     if(ssEl){ ssEl.textContent = pad(ss); }
   }
 
-  // ---- Check the URL for an existing start time ----
-  var urlParams = new URLSearchParams(window.location.search);
-  var startParam = urlParams.get('start');
-
-  if(startParam){
-    // This visitor opened a link that already has the start time in it
-    document.getElementById('organizer-controls').style.display = 'none';
-    beginTimerFrom(parseInt(startParam, 10));
-  } else {
-    // No start time yet — show the organizer's "Start" button
-    document.getElementById('start-hackathon-btn').addEventListener('click', function(){
-      var nowTimestamp = Date.now();
-
-      // Build a shareable link with ?start= added
-      var shareUrl = window.location.origin + window.location.pathname + '?start=' + nowTimestamp;
-
-      // Update this browser's own address bar too (optional, doesn't reload the page)
-      window.history.replaceState({}, '', shareUrl);
-
-      // Show link to the organizer can copy it
-      document.getElementById('start-hackathon-btn').style.display = 'none';
-      document.getElementById('share-url-box').style.display = 'block';
-      document.getElementById('share-url-input').value = shareUrl;
-
-      beginTimerFrom(nowTimestamp);
-    });
-
-    document.getElementById('copy-url-btn').addEventListener('click', function(){
-      var input = document.getElementById('share-url-input');
-      input.select();
-      navigator.clipboard.writeText(input.value).then(function(){
-        var btn = document.getElementById('copy-url-btn');
-        var original = btn.textContent;
-        btn.textContent = 'Copied ✓';
-        setTimeout(function(){ btn.textContent = original; }, 1500);
-      });
-    });
-  }
+  updateHackathonTimer();
+  timerIntervalHandle = setInterval(updateHackathonTimer, 1000);
 </script>
 
 </body>
