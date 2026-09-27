@@ -2184,11 +2184,11 @@ footer{
   width:6px;
   height:6px;
   border-radius:50%;
-  background:#ffe600;
+  background:#88ff00;
   margin-right:8px;
   vertical-align:middle;
   animation:pulse 2s infinite;
-  box-shadow:0 0 8px #ffe600;
+  box-shadow:0 0 8px #33ff00;
 }
 
 /* Responsive */
